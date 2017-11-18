@@ -5,10 +5,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController {
-	
-	@RequestMapping("/login")
-	public String login(){
+
+	@RequestMapping("/")
+	public String index() {
+		return "index";
+	}
+
+	@RequestMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+
+	@RequestMapping(value = "/login")
+	public String login() {
 		return "login";
 	}
+
 
 }

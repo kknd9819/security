@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <title>Spring Security入门</title>
+     <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<h1>欢迎使用Spring Security!</h1>
+
+<p>点击 <a th:href="@{/hello}">这里</a> 打个招呼吧</p>
+<script type="text/javascript">
+	$(function(){
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+		$(document).ajaxSend(function(e,xhr,options){
+			xhr.setRequestHeader(header,token);
+		});
+	});
+</script>
+</body>
+</html>
