@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
 >
@@ -17,6 +18,7 @@
 <form th:action="@{/login}" method="post">
     <div><label> 用户名 : <input type="text" name="username"/> </label></div>
     <div><label> 密 码 : <input type="password" name="password"/> </label></div>
+    <div><label>记住我 : <input type="checkbox" name="remember-me" /></label></div>
     <div><input type="submit" value="登录"/></div>
 </form>
 <script type="text/javascript">
