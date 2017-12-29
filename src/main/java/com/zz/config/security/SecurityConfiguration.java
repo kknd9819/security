@@ -32,8 +32,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().loginPage("/login").permitAll().successHandler(loginSuccessHandler()).and().authorizeRequests()
-				.antMatchers("/images/**", "/checkcode", "/js/**", "/css/**").permitAll().anyRequest().authenticated()
+		http.formLogin().loginPage("/login").permitAll().
+				successHandler(loginSuccessHandler()).and().authorizeRequests()
+				.antMatchers("/images/**", "/checkcode", "/js/**", "/css/**").permitAll()
+				.antMatchers("/hello").hasAnyAuthority("admin")
+				.anyRequest().authenticated()
 				.and().csrf().requireCsrfProtectionMatcher(csrfSecurityRequestMatcher()).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.NEVER).and().logout()
 				.logoutSuccessUrl(settings.getLogoutsuccessurl()).and().exceptionHandling()

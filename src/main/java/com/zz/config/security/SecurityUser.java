@@ -24,7 +24,7 @@ public class SecurityUser extends User implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		List<Role> roles = this.getRoles();
+		List<Role> roles = user.getRoles();
 		if(roles != null){
 			for(Role role : roles){
 				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
